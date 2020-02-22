@@ -1,0 +1,140 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de maestros-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formMaestro" id="formMaestro" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading">Actualizar alumno</h2>
+                <div class="login-wrap">
+              
+                    <label>Clave:</label>
+		    <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="<?php echo $formId; ?>" readonly>
+		    
+                    <p>Ingresar sus Datos Personales</p>
+                    
+                    <label>Nombre(s):</label>
+                    <input type="text" name="formNombre" id="formNombre" class="form-control" placeholder="Juan..." autofocus="" value="<?php echo $formNombre; ?>">
+                    
+                    <label>Apellido paterno:</label>
+                    <input type="text" name="formPaterno" id="formPaterno" class="form-control" placeholder="Perez..." autofocus="" value="<?php echo $formPaterno; ?>">
+
+                    <label>Apellido materno:</label>
+                    <input type="text" name="formMaterno" id="formMaterno" class="form-control" placeholder="Gonzalez..." autofocus="" value="<?php echo $formMaterno; ?>">
+
+                    <label>CURP:</label>
+                    <input type="text" name="formCurp" id="formCurp" class="form-control" placeholder="GWE1231243SDFSDF34" autofocus="" value="<?php echo $formCurp; ?>">
+
+                    <label>Genero:</label>
+                    <select class="form-control border-radius" name="formGenero" id="formGenero" >
+                        <option value="M" <?php if($formGenero == "M"){ echo "selected";}?> >Masculino</option>
+                        <option value="F" <?php if($formGenero == "F"){ echo "selected";}?> >Femenino</option>
+                        <option value="O" <?php if($formGenero == "O"){ echo "selected";}?> >Otro</option>
+                    </select></br>
+
+                    <label>Fecha de nacimiento:</label>
+                    <input type="date" name="formFecha" id="formFecha" class="form-control" placeholder="01/01/0001" autofocus="" value="<?php echo $formFecha; ?>">
+		    </br>
+		    
+		    <label>Dirección:</label>
+                    <textarea name="formDir" id="formDir" placeholder="Unidad Modelo #234...." rows="5" class="form-control"> <?php echo $formDir; ?> </textarea>
+                    </br>
+                    
+                    <label>Teléfono:</label>
+                    <input type="tel" name="formTel" id="formTel" class="form-control" placeholder="8332325678" autofocus="" value="<?php echo $formTel; ?>">
+                    </br>
+                    
+                    <label>Promedio:</label>
+                    <input type="number" min="0" step="any" name="formPromedio" id="formPromedio" class="form-control" placeholder="9.4" autofocus="" value="<?php echo $formPromedio; ?>" <?php if($formTitulo == "Actualizar"){ echo "readonly"; }?>>
+                    <br>
+                    
+                    <label>Escuela de procedencia:</label>
+                    <input type="text" name="formEscuela" id="formEscuela" class="form-control" placeholder="Universidad del Golfo" autofocus="" value="<?php echo $formEscuela; ?>">
+                          
+                    <?php
+                  
+                    require('php/modelo/Database.php');
+                     $q = "SELECT * FROM grupos";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo='<label>Grupos:</label>
+                    <select class="form-control border-radius" name="formGrupo" id="formGrupo" >';
+                    
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      if($registro["alumnos_registrados"] < $registro["capacidad"]){
+			$codigo .= '<option value="'.$registro["id_grupo"].'" ';
+			if($formGrupo==$registro["id_grupo"]){ $codigo .= 'selected'; }
+			$codigo .= ' >'.$registro["etiqueta"].'</option>';
+		      }
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';
+                 
+				 
+			require('php/modelo/Database.php');
+                     $q = "SELECT * FROM padres";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo.='<label>Padre:</label>
+                    <select class="form-control border-radius" name="formPadre" id="formPadre" >';
+                    
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $codigo .= '<option value="'.$registro["id_padre"].'" ';
+		      if($formPadre==$registro["id_padre"]){ $codigo .= 'selected'; }
+		      $codigo .= ' >'.$registro["nombres"].' '.$registro["apellido_paterno"].' '.$registro["apellido_materno"].'</option>';
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';	 
+				 
+				 
+			require('php/modelo/Database.php');
+                     $q = "SELECT * FROM padres";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo.='<label>Madre:</label>
+                    <select class="form-control border-radius" name="formMadre" id="formMadre" >';
+                  
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $codigo .= '<option value="'.$registro["id_padre"].'" ';
+		      if($formMadre==$registro["id_padre"]){ $codigo .= 'selected'; }
+		      $codigo .= ' >'.$registro["nombres"].' '.$registro["apellido_paterno"].' '.$registro["apellido_materno"].'</option>';
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';	 
+				 
+				 
+		     echo $codigo;
+		    
+                    ?>     
+                          
+                          
+                          
+                   <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-alumnos.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

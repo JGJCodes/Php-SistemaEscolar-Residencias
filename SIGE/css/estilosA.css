@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+*{
+	box-sizing: border-box;
+	margin: 0;
+}
+/*
+html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+*/
+.encabezado{
+	width: 15%;
+}
+img{
+	display: block;
+	max-width: 100%;
+}
+#subirCalif{
+	display: none;
+}
+.inicio{
+	height: 260px;
+	text-align: center;
+	font-size: 50px;
+	color: #CE852A;
+
+}
+
+.Calif{
+	height: 260px;
+	display: none;
+	overflow: scroll;	
+	visibility: visible;
+}
+.Horario{
+	height: 260px;
+	display: none;
+	overflow: scroll;	
+	visibility: visible;
+}
+.main{
+	margin-top: -1%;
+}
+body{
+	/*height: 100%;
+	margin: 0;
+	padding: 0;
+	*/
+	font-family: 'Open Sans', sans-serif;
+}
+ td, th{
+	border:2px solid black;
+	text-align: center;
+	padding: 5px;
+}
+
+table{
+	margin-left: 2%;
+	width: 95%;
+}
+th{
+	background: #CE852A;
+	width: 22%;
+	color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	letter-spacing: 1.5px;
+}
+/*
+#wrapper{
+	min-height: 100%;
+	position: relative;
+}
+*/
+.footer{		
+	background: #333;
+	color: #fff;
+	padding: 10px;	
+	text-align: center;	
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 0px;
+}
+.footer .social [class^="icon-"]{
+	display: inline-block;
+	color: #333;
+	text-decoration: none;
+	font-size: 30px;
+	padding: 10px;
+	background: white;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	line-height: 40px;
+}
+
+
+/**************ESTILOS RESPONSIVE******************/
+@media(max-width: 480px){
+	.logo{
+		font-size: 40px;
+}
+
+@media(min-width: 768px){
+	article a{
+		text-align: center;
+	}
+	
+	.select{
+		background: white;
+		color: #FBA919;
+	}
+}
+@media(min-width: 1024px){
+
+}

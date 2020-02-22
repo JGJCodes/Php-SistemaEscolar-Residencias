@@ -1,0 +1,38 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de asignaturas-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formAsignatura" id="formAsignatura" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"><?php echo $formTitulo." asignatura"; ?></h2>
+                <div class="login-wrap">
+                    
+                    <?php
+		    if($formTitulo=="Actualizar"){
+		     $codigo = '<label>Clave:</label>
+		     <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="'.$formId.'" readonly>';
+		     $codigo = utf8_encode($codigo);
+		     echo $codigo;
+		    }
+                    ?>
+                    <label>Titulo:</label>
+                    <input type="text" name="formNombre" id="formNombre" class="form-control" placeholder="Español" autofocus="" value="<?php echo $formNombre; ?>">
+                    
+                    <label>Descripción:</label>
+                    <textarea name="formPrograma" id="formPrograma" placeholder="Unidad 1: Verbos...." rows="5" class="form-control"> <?php echo $formPrograma; ?> </textarea>
+                    </br>
+                    <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-materias.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

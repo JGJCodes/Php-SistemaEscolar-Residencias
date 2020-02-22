@@ -1,0 +1,30 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+<!--Formulario de registro y actualizacion de admins-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formBorrar" id="formBorrar" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"> Borrar registro</h2>
+                <div class="login-wrap">
+		    <input type="hidden" id="formId" name="formId" value="<?php echo $formId;?>"/>
+		    <input type="hidden" id="formLlave" name="formLlave" value="<?php echo $formLlave;?>"/>
+		    <input type="hidden" id="formTabla" name="formTabla" value="<?php echo $formTabla;?>"/>
+		    <input type="hidden" id="formPagina" name="formPagina" value="<?php echo $formPagina;?>"/>
+		    
+                    <label>¿Estas seguro que deseas eliminar el registro?</label>
+                    
+                    <div class="login-social-link">  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-danger" onclick="location='<?php echo $formPagina;?>'" type="button">No</button>
+			<button id="btnAceptar" class="btn btn-lg btn-primary" type="submit">Si</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+<!--container end-->

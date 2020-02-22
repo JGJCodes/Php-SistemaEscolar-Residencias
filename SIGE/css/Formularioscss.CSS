@@ -1,0 +1,159 @@
+html {
+	font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+	background-color: #FEFCE6;
+}
+h6{
+	color: red;			
+	width: 25%;
+	margin-left: 25%;
+}
+h6 span{
+	color: green;			
+	width: 25%;
+	margin-left: 25%;
+}
+
+label span{
+	font-size: 13px;
+	color: gray;		
+	border: none;		
+}
+#listas{
+	height: 300px;
+	
+	overflow: scroll;	
+	visibility: visible;
+}
+
+.container {
+	max-width: 450px;
+	height: auto;
+	background-color: #EFEFEF;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+	
+}
+.container2 {	
+	width: 80%;
+	height: auto;	
+	background-color: #EFEFEF;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+	
+}
+
+.container3 {	
+	width: 90%;
+	height: auto;	
+	background-color: #EFEFEF;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+	
+}
+
+.form__top {
+	display: none;
+	width: 100%;
+	
+	padding: 2rem 0 1rem;
+	border-top: solid .4rem #CE852A;
+	margin-bottom: 1rem;
+}
+
+.form__reg2 {
+	padding: 0 2rem;
+	display: flex;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+}
+.form__top h2 {
+	font-weight: bold;
+	color: #CAC8C8;
+	font-size: 18px;
+}
+
+.form__top1 {
+	
+	
+	padding: 2rem 0 1rem;
+	border-top: solid .4rem #CE852A;
+	margin-bottom: 1rem;
+}
+
+
+h2 span {
+	color: #CE852A;
+}
+
+.form__reg {
+	padding: 0 2rem;
+	display: flex;
+	
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+.btn__form {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 1rem;
+}
+
+.input, .btn__submit, .btn__reset{
+	background-color: #EFEFEF;
+	padding: .5rem;
+	margin: .5rem 0;
+	border: none;
+	border-bottom: solid #C8C8C8 .2rem;
+	transition: all .5s;
+}
+
+.btn__submit2{
+	background-color: #EFEFEF;
+	padding: .5rem;
+	margin: .5rem 0;
+	border: none;
+	border-bottom: solid #C8C8C8 .2rem;
+	transition: all .5s;
+}
+.input2:focus {
+	border-bottom: solid #F39B53 .2rem;
+}
+.btn__submit2 {
+	width: 40%;
+	margin-left: 25%;
+	margin-top: 3%;
+	border-bottom: none;
+	background-color: #4C9ED9;
+	color: white;
+}
+
+
+.input:focus {
+	border-bottom: solid #F39B53 .2rem;
+}
+
+.btn__submit, .btn__reset {
+	width: 40%;
+	border-bottom: none;
+	background-color: #4C9ED9;
+	color: white;
+}
+
+.btn__reset {
+	background-color: #CE852A;
+}
+
+.btn__submit:hover {
+	background-color: #31B1E5;
+}
+
+.btn__reset:hover{
+	background-color: #FA9535;
+}

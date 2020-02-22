@@ -1,0 +1,163 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de calificaciones-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formAsig" id="formAsig" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"><?php echo $formTitulo." calificaciones"; ?></h2>
+                <div class="login-wrap">
+                    
+                    <?php
+                    if($formTitulo=="Registrar"){
+		      require('php/modelo/Database.php');
+                     $q = "SELECT * FROM asignaturas";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo='<label>Asignatura:</label>
+                    <select class="form-control border-radius" name="formAsig" id="formAsig" ';
+                   
+		$codigo.='>';
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $codigo .= '<option value="'.$registro["id_asignatura"].'" >'.$registro["titulo"].'</option>';
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';
+                  
+
+		require('php/modelo/Database.php');
+                     $q = "SELECT * FROM grupos";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo.='<label>Grupos:</label>
+                    <select class="form-control border-radius" name="formGrupo" id="formGrupo" ';
+                    
+					$codigo.='>';
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $codigo .= '<option value="'.$registro["id_grupo"].'" >'.$registro["etiqueta"].'</option>';
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';
+                 
+				 
+			require('php/modelo/Database.php');
+                     $q = "SELECT * FROM estudiantes";
+		     $r = mysqli_query($dbc, $q);
+		     $codigo.='<label>Estudiante:</label>
+                    <select class="form-control border-radius" name="formAlumno" id="formAlumno" ';
+                  
+					$codigo.='>';
+                    if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $codigo .= '<option value="'.$registro["id_estudiante"].'" >'.$registro["nombres"].' '.$registro["apellido_paterno"].' '.$registro["apellido_materno"].'</option>';
+		    }
+            
+		    mysqli_free_result($r);
+            
+		  }    
+		    mysqli_close($dbc);
+                    $codigo .= '</select></br>';
+		    
+		    }
+		    
+		    if($formTitulo=="Actualizar"){
+		     
+		     require('php/modelo/Database.php');
+                     $q = "SELECT * FROM grupos WHERE id_grupo='$formGrupo'";
+		     $r = mysqli_query($dbc, $q);
+		     if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $grupo = $registro["etiqueta"];
+		    }
+            
+		    mysqli_free_result($r);mysqli_close($dbc);}
+		    
+		    require('php/modelo/Database.php');
+                     $q = "SELECT * FROM asignaturas WHERE id_asignatura='$formAsig'";
+		     $r = mysqli_query($dbc, $q);
+		     if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $asig = $registro["titulo"];
+		    }
+            
+		    mysqli_free_result($r);mysqli_close($dbc);}
+		    
+		    require('php/modelo/Database.php');
+                     $q = "SELECT * FROM estudiantes WHERE id_estudiante='$formAlumno'";
+		     $r = mysqli_query($dbc, $q);
+		     if($r){//si hay resultado entonces
+	
+		   while($registro = mysqli_fetch_array($r)){ //recupera los datos del usuario
+		      $est = $registro["nombres"].' '.$registro["apellido_paterno"].' '.$registro["apellido_materno"];
+		    }
+            
+		    mysqli_free_result($r);mysqli_close($dbc);}
+		    
+		    
+		    $codigo = '<label>Clave:</label>
+		     <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="'.$formId.'" readonly>
+		     
+		     <label>Grupo:</label>
+		     <input type="text" name="formGrupo" id="formGrupo" class="form-control" autofocus="" value="'.$grupo.'" readonly>
+		     
+		     <label>Asignatura:</label>
+		     <input type="text" name="formAsig" id="formAsig" class="form-control" autofocus="" value="'.$asig.'" readonly>
+		     
+		     <label>Estudiante:</label>
+		     <input type="text" name="formAlumno" id="formAlumno" class="form-control" autofocus="" value="'.$est.'" readonly>
+		     
+		     <label>Primer parcial:</label>
+                    <input type="number" min="0" step="any" name="formParcial1" id="formParcial1" class="form-control" placeholder="8.4" autofocus="" value="'.$formParcial1.'">
+		    </br>
+		    
+		    <label>Segundo parcial:</label>
+                    <input type="number" min="0" step="any" name="formParcial2" id="formParcial2" class="form-control" placeholder="8.4" autofocus="" value="'.$formParcial2.'">
+		    </br>
+		    
+		    <label>Tercer parcial:</label>
+                    <input type="number" min="0" step="any" name="formParcial3" id="formParcial3" class="form-control" placeholder="8.4" autofocus="" value="'.$formParcial3.'">
+		    </br>
+		    
+		    <label>Calificion final:</label>
+                    <input type="number" min="0" step="any" name="formFinal" id="formFinal" class="form-control" placeholder="8.4" autofocus="" value="'.$formFinal.'" readonly>
+		    </br>
+		    ';	
+		     
+		    }
+                    
+		     echo $codigo;
+                    
+                    
+                    ?>
+                    
+                    <label>Fecha limite de registro:</label>
+                    <input type="date" name="formFecha" id="formFecha" class="form-control" placeholder="01/01/0001" autofocus="" value="<?php echo $formFecha; ?>">
+		    </br>
+                    
+                    <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-grupos.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

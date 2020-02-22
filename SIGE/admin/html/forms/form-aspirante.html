@@ -1,0 +1,98 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de aspirante-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formAspirante" id="formAspirante" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"><?php echo $formTitulo." aspirante"; ?></h2>
+                <div class="login-wrap">
+                    
+                    <?php
+		    if($formTitulo=="Actualizar"){
+		     $codigo = '<label>Clave:</label>
+		     <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="'.$formId.'" readonly>
+		     
+		     <label>Fecha de registro:</label>
+		     <input type="datetime" name="formReg" id="formReg" class="form-control" autofocus="" value="'.$formReg.'" readonly> <br>';
+		     $codigo = utf8_encode($codigo);
+		     echo $codigo;
+		    }
+                    ?>
+                    <label>Nombre(s):</label>
+                    <input type="text" name="formNombre" id="formNombre" class="form-control" placeholder="Juan..." autofocus="" value="<?php echo $formNombre; ?>">
+                    
+                    <label>Apellido paterno:</label>
+                    <input type="text" name="formPaterno" id="formPaterno" class="form-control" placeholder="Perez..." autofocus="" value="<?php echo $formPaterno; ?>">
+
+                    <label>Apellido materno:</label>
+                    <input type="text" name="formMaterno" id="formMaterno" class="form-control" placeholder="Gonzalez..." autofocus="" value="<?php echo $formMaterno; ?>">
+
+                    <label>CURP:</label>
+                    <input type="text" name="formCurp" id="formCurp" class="form-control" placeholder="GWE1231243SDFSDF34" autofocus="" value="<?php echo $formCurp; ?>">
+
+                    <label>Genero:</label>
+                    <select class="form-control border-radius" name="formGenero" id="formGenero" >
+                        <option value="M" <?php if($formGenero == "M"){ echo "selected";}?> >Masculino</option>
+                        <option value="F" <?php if($formGenero == "F"){ echo "selected";}?> >Femenino</option>
+                        <option value="O" <?php if($formGenero == "O"){ echo "selected";}?> >Otro</option>
+                    </select></br>
+
+                    <label>Fecha de nacimiento:</label>
+                    <input type="date" name="formFecha" id="formFecha" class="form-control" placeholder="01/01/0001" autofocus="" value="<?php echo $formFecha; ?>">
+		    </br>
+		    
+		    <label>Dirección:</label>
+                    <textarea name="formDir" id="formDir" placeholder="Unidad Modelo #234...." rows="5" class="form-control"> <?php echo $formDir; ?> </textarea>
+                    </br>
+                    
+                    <label>Teléfono:</label>
+                    <input type="tel" name="formTelefono" id="formTelefono" class="form-control" placeholder="8332325678" autofocus="" value="<?php echo $formTelefono; ?>">
+                    </br>
+                    
+                    <label>Email:</label>
+                    <input type="email" name="formEmail" id="formEmail" class="form-control" placeholder="ejemplo@email.com" autofocus="" value="<?php echo $formEmail; ?>">
+                    </br>
+                    
+                     <label>Escuela de procedencia:</label>
+                    <input type="text" name="formEscuela" id="formEscuela" class="form-control" placeholder="Kinder los tres mosqueteros" autofocus="" value="<?php echo $formEscuela; ?>">
+                    
+                    <label>Promedio escolar:</label>
+                    <input type="number" min="0" step="any" name="formPromedio" id="formPromedio" class="form-control" placeholder="8.4" autofocus="" value="<?php echo $formPromedio; ?>">
+		    </br>
+		    
+                   <label>Calificación del examen de admisión:</label>
+                    <input type="number" min="0" step="any" name="formExamen" id="formExamen" class="form-control" placeholder="8.4" autofocus="" value="<?php echo $formExamen; ?>">
+		    </br>
+		    
+		    <label>Grado de estudios para entrar:</label>
+                    <input type="number" min="0" name="formGrado" id="formGrado" class="form-control" placeholder="4" autofocus="" value="<?php echo $formGrado; ?>">
+		    </br>
+		    
+		    <label>Nombre del padre:</label>
+                    <input type="text" name="formPadre" id="formPadre" class="form-control" placeholder="Jose Antonio Juarez" autofocus="" value="<?php echo $formPadre; ?>">
+                    
+                    <label>Nombre de la madre:</label>
+                    <input type="text" name="formMadre" id="formMadre" class="form-control" placeholder="Josefina Martinez Suarez" autofocus="" value="<?php echo $formMadre; ?>">
+                    
+		    
+                     <label>Solicitud de admisión:</label> 
+                    <select class="form-control border-radius" name="formSolicitud" id="formSolicitud" >
+                        <option value="0" <?php if($formSolicitud == 0){ echo "selected";}?> >Rechazado</option>
+                        <option value="1" <?php if($formSolicitud == 1){ echo "selected";}?> >Aceptado</option>
+                    </select></br>
+                         
+                    <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-aspirantes.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

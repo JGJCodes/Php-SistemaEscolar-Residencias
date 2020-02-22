@@ -1,0 +1,59 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de usuarios-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formUsuario" id="formUsuario" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"><?php echo $formTitulo." usuario"; ?></h2>
+                <div class="login-wrap">
+                    
+                    <?php
+		    if($formTitulo=="Actualizar"){
+		     $codigo = '<label>Clave:</label>
+		     <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="'.$formId.'" readonly>';
+		     $codigo = utf8_encode($codigo);
+		     echo $codigo;
+		    }
+                    ?>
+                    
+                    <label>Estatus de la cuenta:</label>
+                    <select class="form-control border-radius" name="formEstatus" id="formEstatus">
+                        <option  value="0" <?php if($formEstatus == 0){ echo "selected";}?> >Inactivo</option>
+                        <option value="1" <?php if($formEstatus == 1){ echo "selected";}?> >Activo</option>
+                    </select><br />
+                    
+                    <label>Nombre de usuario:</label>
+                    <input type="text" name="formNombre" id="formNombre" class="form-control" placeholder="Nombre de usuario" autofocus="" value="<?php echo $formNombre; ?>">
+
+                    <label>Tipo de usuario:</label>
+                    <select class="form-control border-radius" name="formTipo" id="formTipo" <?php if($formTitulo == "Actualizar"){ echo "readonly"; }?>  >
+                        <option  value="estudiante" <?php if($formTipo == "estudiante"){ echo "selected";}?> >Estudiante</option>
+                        <option value="maestro" <?php if($formTipo == "maestro"){ echo "selected";}?> >Maestro</option>
+                        <option value="admin" <?php if($formTipo == "admin"){ echo "selected";}?> >Administrador</option>
+                    </select><br />
+               
+                    <label>Email:</label>
+                    <input type="email" name="formEmail" id="formEmail" class="form-control" placeholder="ejemplo@email.com" autofocus="" value="<?php echo $formEmail; ?>">
+                    </br>
+                    
+                    <label>Contraseña:</label>
+                    <input type="password" name="formPass1" id="formPass1" class="form-control" placeholder="Contraseña" autofocus="" value="">
+                    
+                    <label>Confirmar contraseña:</label>
+                    <input type="password" name="formPass2" id="formPass2" class="form-control" placeholder="Confirmar Contraseña" value="">
+                    
+                    <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-inicio.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

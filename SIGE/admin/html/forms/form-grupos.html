@@ -1,0 +1,61 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de grupos-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formGrupos" id="formGrupos" class="form-signin wow fadeInUp" method="post" >
+                <h2 class="form-signin-heading"><?php echo $formTitulo." grupo"; ?></h2>
+                <div class="login-wrap">
+                    
+                    <?php
+		    if($formTitulo=="Actualizar"){
+		     $codigo = '<label>Clave:</label>
+		     <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="'.$formId.'" readonly>
+		     
+		     <label>Alumnos registrados:</label>
+		     <input type="number" name="formAlumnos" id="formAlumnos" class="form-control" autofocus="" value="'.$formAlumnos.'" readonly><br>
+		     ';
+		     $codigo = utf8_encode($codigo);
+		     echo $codigo;
+		    }
+                    ?>
+                    <label>Etiqueta:</label>
+                    <input type="text" name="formNombre" id="formNombre" class="form-control" placeholder="Nombre del grupo" autofocus="" value="<?php echo $formNombre; ?>">
+                    
+                    <label>Turno:</label>
+                    <select class="form-control border-radius" id="formTurno" name="formTurno">
+                        <option value="matutino" <?php if($formTurno == "matituno"){ echo "selected";}?> >Matutino</option>
+                        <option value="vespertino" <?php if($formTurno == "vespertino"){ echo "selected";}?> >Vespertino</option>
+                    </select>
+                    </br>
+                    
+                    <label>Salon:</label>
+                    <input type="text" name="formSalon" id="formSalon" class="form-control" placeholder="A-1" autofocus="" value="<?php echo $formSalon; ?>">
+                    
+                    <label>Grado escolar:</label>
+                    <input type="number" min="0" name="formGrado" id="formGrado" class="form-control" placeholder="3" autofocus="" value="<?php echo $formGrado; ?>">
+                    </br>
+                    
+                    <label>Capacidad:</label>
+                    <input type="number" min="0" name="formCapacidad" id="formCapacidad" class="form-control" placeholder="15" autofocus="" value="<?php echo $formCapacidad; ?>">
+                    </br>
+                    
+                    <label>Promedio:</label>
+                    <input type="number" min="0" step="any" name="formPromedio" id="formPromedio" class="form-control" placeholder="8.5" autofocus="" value="<?php echo $formPromedio; ?>" readonly>
+                    </br>
+                    
+                    <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-grupos.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->

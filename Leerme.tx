@@ -1,0 +1,13 @@
+Instrucciones para instalar la plataforma web en un servidor web:
+
+1) Importar la base de datos del sistema en el servidor web utilizando el archivo "DataBase.sql". NOTA: El archivo solo debe usarse con MYSQL SERVER.
+
+2) Crear una cuenta de usuario en el servidor de base de datos con los siguientes datos: (nombre de usuario)"res" y (contraseña)""; y otorgarle los permisos necesarios para crear,modificar y borrar registros en la base de datos.
+
+3) Copiar todos los archivos de la carpeta "SIGE" en la carpeta contenedora de las paginas web en el servidor web, que puede ser "HTDOCS" o "WWW".
+
+4) Para acceder a la plataforma solo hay que introducir el domidio del sitio web en un navegador web por medio de un dispositivo, por ejemplo: http://sige.com.
+
+5) Para acceder al modo administrador del sistema es necesario incluir "/admin" al dominio del sitio web, por ejemplo: http://sige.com/admin.
+
+NOTA: el usuario y contraseña de la cuenta de administrador por defecto son: "admin@gmail.com" y "admin123", respectivamente.

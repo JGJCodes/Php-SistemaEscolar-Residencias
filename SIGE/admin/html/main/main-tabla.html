@@ -1,0 +1,66 @@
+<main class="container" >
+    <div class="table-responsive">
+    <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th><?php echo "$fila1";?></th>
+                  <th><?php echo "$fila2";?></th>
+                  <th><?php echo "$fila3";?></th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                require('php/modelo/Database.php');
+                
+                if($query=="id"){
+                   $q = "SELECT  * FROM ". $tabla ." WHERE ".$llave."=".$Id ;
+                }else{
+		   $q = "SELECT  * FROM ". $tabla;
+                }
+                 
+                $res = mysqli_query($dbc, $q);
+                
+                
+                if($res){
+                    while($registro = mysqli_fetch_array($res)){
+                        echo '<tr class="active">
+                            <td> '. $registro["$tbf1"].'</td>';
+                        if($nombre=="completo"){
+                          echo '<td>'.$registro['nombres'].' '.$registro['apellido_paterno'].' '.$registro['apellido_materno'].'</td>';
+                        }else{
+			  echo '<td>'. $registro["$tbf2"].'</td>';
+                        }
+                        echo '<td>'. $registro["$tbf3"].'</td>
+                             <td> <a href="'.$btnBorrar.'?id='.$registro["$tbf1"].'&tabla='.$tabla.'" id="btnBorrar" class="btn btn-danger">Borrar</a> 
+			      <a class="btn btn-primary" href="'. $btnEditar.'?id='.$registro["$tbf1"].'">Editar</a> ';
+			if($btnextra1==true){
+                          echo '<a class="btn btn-success" href="'. $btnext1href.'?id='.$registro["$tbf1"].'">'.$btnext1label.'</a> ';
+                        }
+                        if($btnextra2==true){
+			  echo '<a class="btn btn-success" href="'. $btnext2href.'?id='.$registro["$tbf1"].'">'.$btnext2label.'</a> ';
+                        }
+                        if($btnextra3==true){
+			  echo '<a class="btn btn-success" href="'. $btnext3href.'?id='.$registro["$tbf1"].'">'.$btnext3label.'</a> ';
+                        }
+                        if($btnextra4==true){
+			  echo '<a class="btn btn-success" href="'. $btnext4href.'?id='.$registro["$tbf1"].'">'.$btnext4label.'</a> ';
+                        }
+			echo '</td>'
+                              .'</tr><br />';
+                    }
+                    
+                    echo '</tbody></table>';
+                    mysqli_free_result($res);
+                }
+                else{
+                    echo '<p> Lo sentimos la pagina ha tenido un inconveniente</p> <br />';	
+                    echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p> <br/ ></main>';
+                }
+                
+                mysqli_close($dbc);
+                ?>
+    </div>
+</main>
+
+</br></br>

@@ -1,0 +1,88 @@
+<?php
+  if($codError!=""){
+    echo $codError;
+  }
+?>
+
+ <!--Formulario de registro y actualizacion de maestros-->
+    <div class="registration-bg">
+        <div class="container">
+
+            <form name ="formMaestro" id="formMaestro" class="form-signin wow fadeInUp" method="POST" action="">
+                <h2 class="form-signin-heading"><?php echo $formTitulo." ficha medica"; ?></h2>
+                <div class="login-wrap">
+              
+                    <label>CLave de estudiante:</label>
+		    <input type="text" name="formId" id="formId" class="form-control" autofocus="" value="<?php echo $formId; ?>" readonly>
+		    
+		    <?php
+		    if($formTitulo=="Actualizar"){
+		     $codigo = '<label>Fecha de actualización:</label>
+		     <input type="datetime" name="formFecha" id="formFecha" class="form-control" autofocus="" value="'.$formFecha.'" readonly> <br>';
+		     echo $codigo;
+		    }
+                    ?>
+                    
+                    <input type="hidden" id="formClave" name="formClave" value="<?php echo $formClave;?>"/>
+		    
+                    <p>Ingresar sus Datos medicos</p>
+                    
+                    <label>Peso:</label>
+                    <input type="number" min="0" step="any" name="formPeso" id="formPeso" class="form-control" placeholder="30" autofocus="" value="<?php echo $formPeso; ?>">
+                    <br>
+                    
+                    <label>Estatura:</label>
+                    <input type="number" min="0" step="any" name="formEstatura" id="formEstatura" class="form-control" placeholder="1.30" autofocus="" value="<?php echo $formEstatura; ?>">
+		    <br>
+		    
+		    <label>Padecimientos medicos:</label>
+                    <textarea name="formPad" id="formPad" placeholder="Leucemia...." rows="5" class="form-control"> <?php echo $formPad; ?> </textarea>
+                    </br>
+		    
+		    <label>Alergias:</label>
+                    <textarea name="formAlerg" id="formAlerg" placeholder="Lactosa,animales,...." rows="5" class="form-control"> <?php echo $formAlerg; ?> </textarea>
+                    </br>
+                    
+                    <label>Medicamentos:</label>
+                    <textarea name="formMed" id="formMed" placeholder="Paracetamol,loratadina,buscapina,...." rows="5" class="form-control"> <?php echo $formMed; ?> </textarea>
+                    </br>
+		    
+                    <label>Grupo sanguineo:</label>
+                    <select class="form-control border-radius" name="formSangre" id="formSangre" >
+                        <option value="O-" <?php if($formSangre == "O-"){ echo "selected";}?> >O-</option>
+                        <option value="O+" <?php if($formSangre == "O+"){ echo "selected";}?> >O+</option>
+                        <option value="A-" <?php if($formSangre == "A-"){ echo "selected";}?> >A-</option>
+                        <option value="A+" <?php if($formSangre == "A+"){ echo "selected";}?> >A+</option>
+                        <option value="B-" <?php if($formSangre == "B-"){ echo "selected";}?> >B-</option>
+                        <option value="B+" <?php if($formSangre == "B+"){ echo "selected";}?> >B+</option>
+                        <option value="AB-" <?php if($formSangre == "AB-"){ echo "selected";}?> >AB-</option>
+                        <option value="AB+" <?php if($formSangre == "AB+"){ echo "selected";}?> >AB+</option>
+                    </select></br>
+                    
+                    <label>Institución medica:</label>
+                    <select class="form-control border-radius" name="formInst" id="formInst" >
+                        <option value="IMSS" <?php if($formInst == "IMSS"){ echo "selected";}?> >IMSS</option>
+                        <option value="ISSSTE" <?php if($formInst == "ISSSTE"){ echo "selected";}?> >ISSSTE</option>
+                        <option value="POPULAR" <?php if($formInst == "POPULAR"){ echo "selected";}?> >Popular</option>
+                        <option value="PEMEX" <?php if($formInst == "PEMEX"){ echo "selected";}?> >PEMEX</option>
+                        <option value="SEDENA" <?php if($formInst == "SEDENA"){ echo "selected";}?> >SEDENA</option>
+                        <option value="OTRO" <?php if($formInst == "OTRO"){ echo "selected";}?> >Otro</option>
+                    </select></br>
+                    
+                    <label>Nombre del medico:</label>
+                    <input type="text" name="formMedico" id="formMedico" class="form-control" placeholder="Dr. Juan Carlos Tellez" autofocus="" value="<?php echo $formMedico; ?>">
+                    
+                    <label>Teléfono del medico:</label>
+                    <input type="tel" name="formTel" id="formTel" class="form-control" placeholder="833432131" autofocus="" value="<?php echo $formTel; ?>">
+                     <br>
+                     
+                   <div>  <!--Botones del formulario-->
+                        <button id="btnCancelar" class="btn btn-lg btn-block" onclick="location='admin-alumnos.php'" type="button">Cancelar</button>
+			<button id="btnAceptar" class="btn btn-lg btn-login btn-block" type="submit">Aceptar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+     </div>
+    <!--container end-->
